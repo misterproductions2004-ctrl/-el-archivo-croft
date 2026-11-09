@@ -10,30 +10,86 @@ from bs4 import BeautifulSoup
 
 
 # ============================================================
-# CROFT WATCH V2.1 — TOMB RAIDER EDITORIAL MONITOR
+# CROFT WATCH V3.0 — EDITORIAL MONITOR
 # ============================================================
 
-VERSION = "2.1"
+VERSION = "3.0"
 
 SOURCES = [
     {
         "name": "Tomb Raider Official",
         "url": "https://www.tombraider.com/news/all",
         "domains": ["www.tombraider.com", "tombraider.com"],
+        "include_page": False,
+        "scan_links": True,
     },
     {
         "name": "Crystal Dynamics",
         "url": "https://www.crystaldynamics.com/news-community/",
         "domains": ["www.crystaldynamics.com", "crystaldynamics.com"],
+        "include_page": False,
+        "scan_links": True,
+    },
+    {
+        "name": "Netflix Tudum",
+        "url": "https://www.netflix.com/tudum/tomb-raider-the-legend-of-lara-croft",
+        "domains": ["www.netflix.com", "netflix.com"],
+        "include_page": True,
+        "scan_links": True,
+    },
+    {
+        "name": "Amazon MGM Studios",
+        "url": "https://www.aboutamazon.com/news/entertainment/tomb-raider-prime-video-phoebe-waller-bridge-sophie-turner",
+        "domains": ["www.aboutamazon.com", "aboutamazon.com"],
+        "include_page": True,
+        "scan_links": True,
+    },
+    {
+        "name": "Aspyr — Remastered IV-VI",
+        "url": "https://support.aspyr.com/hc/en-us/sections/34244769732749-Updates",
+        "domains": ["support.aspyr.com"],
+        "include_page": False,
+        "scan_links": True,
+    },
+    {
+        "name": "Aspyr — Remastered I-III",
+        "url": "https://support.aspyr.com/hc/en-us/sections/44234935752333-Updates",
+        "domains": ["support.aspyr.com"],
+        "include_page": False,
+        "scan_links": True,
+    },
+    {
+        "name": "Tomb Raider Gear Store — Collectibles",
+        "url": "https://gear.tombraider.com/collections/collectibles",
+        "domains": ["gear.tombraider.com"],
+        "include_page": True,
+        "scan_links": False,
+        "snapshot": True,
+    },
+    {
+        "name": "Tomb Raider Gear Store — Merchandise",
+        "url": "https://gear.tombraider.com/collections/merch",
+        "domains": ["gear.tombraider.com"],
+        "include_page": True,
+        "scan_links": False,
+        "snapshot": True,
+    },
+    {
+        "name": "Dark Horse Digital — Tomb Raider Comics",
+        "url": "https://digital.darkhorse.com/series/345/tomb-raider",
+        "domains": ["digital.darkhorse.com"],
+        "include_page": True,
+        "scan_links": False,
     },
 ]
+
 
 STATE_FILE = Path("data/croft_watch_seen.json")
 REPORT_FILE = Path("data/pendiente_revision.md")
 
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (compatible; CroftWatch/2.1; "
+        "Mozilla/5.0 (compatible; CroftWatch/3.0; "
         "+https://www.tombraider.com)"
     )
 }
@@ -58,12 +114,12 @@ FRANCHISE_TERMS = [
     "rise of the tomb raider",
     "legacy of atlantis",
     "tomb raider catalyst",
-    "legend of lara croft",
+    "the legend of lara croft",
 ]
 
 TOPIC_TERMS = [
     "game", "games", "gaming", "video game",
-    "videogame", "remaster", "remake",
+    "videogame", "remaster", "remastered", "remake",
     "release", "launch", "trailer", "gameplay",
     "development", "developer", "studio",
     "film", "movie", "cinema", "series",
@@ -73,20 +129,23 @@ TOPIC_TERMS = [
     "director", "producer", "writer",
     "comic", "comics", "graphic novel",
     "book", "novel", "publishing",
-    "merchandise", "collectible", "figure",
-    "statue", "collectors", "soundtrack",
-    "event", "award", "interview",
+    "merchandise", "collectible", "collectibles",
+    "figure", "statue", "collectors",
+    "soundtrack", "event", "award", "interview",
     "anniversary", "announcement",
     "update", "patch", "expansion", "dlc",
     "official", "press release",
 ]
 
-CONTACT_TERMS = [
-    "contact", "press contact", "media contact",
-    "press inquiries", "media inquiries",
-    "public relations", "communications",
-    "press office", "media relations",
-    "mailto:", "email protection",
+CONTACT_TITLE_TERMS = [
+    "contact",
+    "press contact",
+    "media contact",
+    "press inquiries",
+    "media inquiries",
+    "public relations",
+    "press office",
+    "media relations",
 ]
 
 IGNORED_PATHS = [
@@ -135,7 +194,7 @@ def load_seen():
             STATE_FILE.read_text(encoding="utf-8")
         )
 
-        # Compatibilidad con el historial antiguo V1.
+        # Compatibilidad con el historial V1/V2.
         if isinstance(data, list):
             return {
                 url: {
@@ -149,7 +208,7 @@ def load_seen():
             return data.get("items", {})
 
     except (json.JSONDecodeError, OSError) as error:
-        print(f"Advertencia: no se pudo leer el historial: {error}")
+        print(f"Advertencia al leer historial: {error}")
 
     return {}
 
@@ -182,12 +241,14 @@ def fetch_page(url):
     final_url = normalize_url(response.url)
 
     if not final_url:
-        raise ValueError(
-            "La página redirigió a una dirección no HTTPS."
-        )
+        raise ValueError("Redirección a una dirección no HTTPS.")
 
     return response, final_url
 
+
+# ============================================================
+# EXTRACCIÓN DE CONTENIDO
+# ============================================================
 
 def get_page_information(url):
     response, final_url = fetch_page(url)
@@ -250,7 +311,7 @@ def get_page_information(url):
         else final_url
     )
 
-    date_values = []
+    dates = []
 
     for selector in [
         "time[datetime]",
@@ -266,15 +327,15 @@ def get_page_information(url):
             )
 
             if value:
-                date_values.append(value)
+                dates.append(value)
 
-    date_values = list(dict.fromkeys(date_values))
+    dates = list(dict.fromkeys(dates))
 
     fingerprint_source = "|".join([
         title,
         description,
         content,
-        " ".join(date_values),
+        " ".join(dates),
     ])
 
     fingerprint = hashlib.sha256(
@@ -287,7 +348,7 @@ def get_page_information(url):
         "title": title,
         "description": description,
         "content": content,
-        "dates": date_values,
+        "dates": dates,
         "fingerprint": fingerprint,
         "content_length": len(content),
         "html": response.text,
@@ -299,11 +360,21 @@ def get_page_information(url):
 # ============================================================
 
 def get_candidates(source):
-    response, _ = fetch_page(source["url"])
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
     candidates = {}
+
+    if source.get("include_page"):
+        candidates[source["url"]] = {
+            "title": source["name"],
+            "url": source["url"],
+            "source": source["name"],
+            "snapshot": source.get("snapshot", False),
+        }
+
+    if not source.get("scan_links", True):
+        return list(candidates.values())
+
+    response, _ = fetch_page(source["url"])
+    soup = BeautifulSoup(response.text, "html.parser")
 
     for link in soup.find_all("a", href=True):
         raw_url = urljoin(source["url"], link["href"])
@@ -340,6 +411,7 @@ def get_candidates(source):
             "title": title,
             "url": url,
             "source": source["name"],
+            "snapshot": False,
         }
 
         if len(candidates) >= MAX_LINKS_PER_SOURCE:
@@ -353,8 +425,8 @@ def get_candidates(source):
 # ============================================================
 
 def classify_item(item, page, previous):
-    title = item["title"]
-    url = item["url"]
+    title = page["title"] or item["title"]
+    url = page["url"]
     content = page["content"]
     description = page["description"]
 
@@ -367,39 +439,49 @@ def classify_item(item, page, previous):
 
     path = urlparse(url).path.lower()
 
-    # 1. Contactos y datos de prensa.
+    # Contactos: solo por ruta o título específico.
+    # No basta con encontrar un correo dentro de una noticia.
     if (
-        contains_any(combined[:5000], CONTACT_TERMS)
-        or "mailto:" in page["html"].lower()
-        or "/contact" in path
-        or "/press" in path
+        any(part in path for part in [
+            "/contact",
+            "/press-contact",
+            "/media-contact",
+        ])
+        or contains_any(title.lower(), CONTACT_TITLE_TERMS)
     ):
         return "CONTACTO", "Página o información de contacto."
 
-    # 2. Comprobar contenido editorial.
+    # Contenido insuficiente.
     if (
         not page["title"]
         or page["content_length"] < MIN_CONTENT_LENGTH
     ):
-        return "DESCARTADO", "Contenido insuficiente."
+        return "DESCARTADO", "Contenido insuficiente o inaccesible."
 
-    # 3. Comprobar relación con Tomb Raider.
+    # Relación con Tomb Raider.
     if not contains_any(combined, FRANCHISE_TERMS):
         return (
             "DESCARTADO",
             "Sin relación editorial demostrable con la franquicia."
         )
 
-    # 4. Comprobar relevancia temática.
+    # Relevancia temática.
     if not contains_any(combined, TOPIC_TERMS):
         return (
             "DESCARTADO",
             "Sin tema editorial reconocido."
         )
 
-    # 5. Detectar modificaciones.
     old = previous.get(url)
 
+    # Los catálogos oficiales se vigilan como páginas de referencia.
+    if item.get("snapshot"):
+        return (
+            "ACTUALIZACIÓN",
+            "Página de catálogo oficial vigilada como referencia."
+        )
+
+    # Cambios en páginas ya registradas.
     if old and old.get("fingerprint"):
         if old["fingerprint"] != page["fingerprint"]:
             return (
@@ -420,19 +502,27 @@ def classify_item(item, page, previous):
 
 
 # ============================================================
-# INFORME EDITORIAL
+# INFORME
 # ============================================================
 
 def build_report(results, stats, checked_at, errors):
     lines = [
-        "# CROFT WATCH V2.1",
+        "# CROFT WATCH V3.0",
         "## Informe de vigilancia editorial",
         "",
         f"Revisión: {checked_at}",
         f"Versión: {VERSION}",
         "",
-        "> INFORME AUTOMÁTICO. Ningún contenido se publica "
-        "en la enciclopedia sin aprobación editorial.",
+        "> Informe automático. Todo elemento requiere revisión humana.",
+        "",
+        "## Fuentes configuradas",
+        "",
+    ]
+
+    for source in SOURCES:
+        lines.append(f"- {source['name']}: {source['url']}")
+
+    lines.extend([
         "",
         "## Resumen",
         "",
@@ -442,13 +532,13 @@ def build_report(results, stats, checked_at, errors):
         f"- Contactos: {stats['CONTACTO']}",
         f"- Descartados: {stats['DESCARTADO']}",
         "",
-    ]
+    ])
 
     descriptions = {
         "NOTICIA": "Anuncios oficiales y novedades.",
-        "ACTUALIZACIÓN": "Cambios en páginas oficiales.",
+        "ACTUALIZACIÓN": "Cambios en páginas y catálogos oficiales.",
         "CONTACTO": "Correos y datos de prensa.",
-        "DESCARTADO": "Enlaces sin contenido editorial.",
+        "DESCARTADO": "Enlaces sin contenido editorial suficiente.",
     }
 
     for category, emoji in CATEGORIES.items():
@@ -466,7 +556,7 @@ def build_report(results, stats, checked_at, errors):
 
         if not entries:
             lines.extend([
-                "Sin elementos en esta revisión.",
+                "Sin elementos nuevos o modificados.",
                 "",
             ])
             continue
@@ -490,7 +580,7 @@ def build_report(results, stats, checked_at, errors):
                 )
 
             lines.extend([
-                "- Estado editorial: Pendiente de revisión humana.",
+                "- Estado: Pendiente de revisión humana.",
                 "",
             ])
 
@@ -513,6 +603,7 @@ def build_report(results, stats, checked_at, errors):
         "- No se publicaron noticias automáticamente.",
         "- No se aprobaron rumores ni filtraciones.",
         "- La clasificación automática requiere revisión humana.",
+        "- Las fuentes inaccesibles deben revisarse manualmente.",
         "",
     ])
 
@@ -550,7 +641,10 @@ def main():
         try:
             candidates = get_candidates(source)
 
-        except (requests.RequestException, ValueError) as error:
+        except (
+            requests.RequestException,
+            ValueError,
+        ) as error:
             errors.append(f"{source['name']}: {error}")
             print(f"Error en fuente: {error}")
             continue
@@ -573,14 +667,18 @@ def main():
 
                 old = updated.get(candidate["url"])
 
-                # CORRECCIÓN V2.1:
-                # No repetir ninguna categoría si la página
-                # conserva exactamente el mismo contenido.
-                if old and old.get("fingerprint") == page["fingerprint"]:
+                # CORRECCIÓN DE DUPLICADOS:
+                # No repetir ninguna categoría si no ha cambiado.
+                if (
+                    old
+                    and old.get("fingerprint")
+                    == page["fingerprint"]
+                ):
                     continue
 
                 result = {
                     **candidate,
+                    "title": page["title"] or candidate["title"],
                     "category": category,
                     "reason": reason,
                     "dates": page["dates"],
@@ -601,7 +699,7 @@ def main():
 
                 print(
                     f"[{category}] "
-                    f"{candidate['title'][:75]}"
+                    f"{result['title'][:75]}"
                 )
 
             except (
@@ -614,7 +712,6 @@ def main():
                 )
                 print(f"Error verificando enlace: {error}")
 
-    # Guardar historial y generar informe.
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
