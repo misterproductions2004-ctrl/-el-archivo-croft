@@ -1,0 +1,621 @@
+{
+  "version": "3.1",
+  "items": {
+    "https://www.tombraider.com/news/all": {
+      "fingerprint": "ca890663c46e5d8458b34778d22c2dad207b05d5fa3d7e7289eba9c975340add",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:11.280839+00:00",
+      "last_seen": "2026-11-09T17:33:11.280848+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/community/tomb-raider-turns-30-celebrate-with-lo-fi-album-and-exclusive-art": {
+      "fingerprint": "3b9643528c017bd64d3b052d77b641376d2adacf1f7df30a56624a9174709342",
+      "title": "Tomb Raider Turns 30! Celebrate with Lo-fi Album & Exclusive Art",
+      "first_seen": "2026-11-09T17:33:11.795557+00:00",
+      "last_seen": "2026-11-09T17:33:11.795565+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/video-games/tomb-raider-legacy-of-atlantis-at-gamescom-2026": {
+      "fingerprint": "4d1b23179c8a884a30c1c99b03b2ba2bb8d93e9802622b007f3eea62fbdf2d43",
+      "title": "Tomb Raider: Legacy of Atlantis at Gamescom 2026",
+      "first_seen": "2026-11-09T17:33:12.787953+00:00",
+      "last_seen": "2026-11-09T17:33:12.787966+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/video-games/pre-orders-are-open-for-tomb-raider-legacy-of-atlantis": {
+      "fingerprint": "22ae93e3d7f4435dd6174d4ed38dd76af75e389c8efa387e28bc39dd858108c8",
+      "title": "Pre-Orders are Open for Tomb Raider: Legacy of Atlantis!",
+      "first_seen": "2026-11-09T17:33:13.286829+00:00",
+      "last_seen": "2026-11-09T17:33:13.286841+00:00",
+      "category": "DUPLICADO"
+    },
+    "https://www.tombraider.com/news/video-games/tomb-raider-i-iii-remastered-challenge-mode-patch-is-live": {
+      "fingerprint": "f7333e167d15501320ba74372adbfe49ad9058692c872cf4952abdd94e234d90",
+      "title": "Tomb Raider I-III Remastered Challenge Mode Patch Is Live",
+      "first_seen": "2026-11-09T17:33:13.830458+00:00",
+      "last_seen": "2026-11-09T17:33:13.830471+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/community/happy-birthday-lara-croft": {
+      "fingerprint": "816ab4b1cbcbfb76580e03ee04845a0579ea9c691d5519aa3f21e47ff9131f8c",
+      "title": "Happy Birthday, Lara Croft",
+      "first_seen": "2026-11-09T17:33:14.736987+00:00",
+      "last_seen": "2026-11-09T17:33:14.737000+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/collaborations/the-30th-anniversary-of-tomb-raider-is-here": {
+      "fingerprint": "42645eeca177b286eafc14d4bbd9b5acdc50698be6ff819b6fe938c743300296",
+      "title": "The 30th Anniversary of Tomb Raider is Here!",
+      "first_seen": "2026-11-09T17:33:15.719639+00:00",
+      "last_seen": "2026-11-09T17:33:15.719652+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/video-games/two-thrilling-tomb-raider-adventures-unveiled-at-the-game-awards": {
+      "fingerprint": "eba24ac3f094adbe80051e9e4cc82bbdd8bf944724b46e802514f6de2e05a1b4",
+      "title": "Two Thrilling Tomb Raider Adventures Unveiled at The Game Awards",
+      "first_seen": "2026-11-09T17:33:16.841103+00:00",
+      "last_seen": "2026-11-09T17:33:16.841109+00:00",
+      "category": "HISTÓRICO"
+    },
+    "https://www.tombraider.com/news/video-games/tomb-raider-definitive-edition-available-now-on-nintendo-switch-tm-and": {
+      "fingerprint": "b5f22af9e8f0cec33abe90dfd13fa3a70d44f0260485e8f61a0f4044d8c4a849",
+      "title": "Tomb Raider: Definitive Edition Available NOW on Nintendo Switch™ and Nintendo Switch™ 2!",
+      "first_seen": "2026-11-09T17:33:17.352123+00:00",
+      "last_seen": "2026-11-09T17:33:17.352130+00:00",
+      "category": "HISTÓRICO"
+    },
+    "https://www.tombraider.com/news/community/welcome-to-the-society-of-raiders": {
+      "fingerprint": "abe0dcf6368d1cad0eba518ccd29816bb17587c62afc0992e30d4d8b7af832a8",
+      "title": "Welcome to the Society of Raiders!",
+      "first_seen": "2026-11-09T17:33:18.297133+00:00",
+      "last_seen": "2026-11-09T17:33:18.297145+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/video-games": {
+      "fingerprint": "8fefdc06ddd8369b20491ec14080634a941ee1e019d6274475cca14d532932e8",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:19.779725+00:00",
+      "last_seen": "2026-11-09T17:33:19.779733+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/collaborations": {
+      "fingerprint": "882a08faa29037b34e5d2e94a6ea9042d1fa418820254a2e1201e5459d59971d",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:20.993517+00:00",
+      "last_seen": "2026-11-09T17:33:20.993526+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/movies-and-tv": {
+      "fingerprint": "16526de69e68bec1f8126cd0a44dc5e18f62f6bbf28733946335ba19f77c279d",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:22.122375+00:00",
+      "last_seen": "2026-11-09T17:33:22.122382+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/merch": {
+      "fingerprint": "e72e5654a5134603b1246186f0f5ff56de5fba8757e4c8e3ca1b12351e03542b",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:23.228174+00:00",
+      "last_seen": "2026-11-09T17:33:23.228182+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/books": {
+      "fingerprint": "85117d5ee0cfce0789596e16c7e81dd60d23c2a2699202aaf7d9e8b183e106ba",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:24.378250+00:00",
+      "last_seen": "2026-11-09T17:33:24.378258+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/community": {
+      "fingerprint": "20c7e265d02464d0ebbfdc8e663e563ee5131e2969321a76496737d00d81d299",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:25.935189+00:00",
+      "last_seen": "2026-11-09T17:33:25.935197+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/cosplay": {
+      "fingerprint": "704e14ec107bef03987bad72eed84a73b6d780d577fb71210a182f27debedf1d",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:27.027008+00:00",
+      "last_seen": "2026-11-09T17:33:27.027015+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/community-creations": {
+      "fingerprint": "bc009a76756eedcc87caa32965f65d9d15dbc2f632395a7b5e0387f9784fb3bb",
+      "title": "Featured News",
+      "first_seen": "2026-11-09T17:33:28.022345+00:00",
+      "last_seen": "2026-11-09T17:33:28.022352+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/community/raider-records-exploring-the-tomb-door-puzzle": {
+      "fingerprint": "72cff16785b9fedef03fc7c20d4589ddff76b19791798326960176917d234f91",
+      "title": "Raider Records – Exploring the Tomb Door Puzzle",
+      "first_seen": "2026-11-09T17:33:28.502006+00:00",
+      "last_seen": "2026-11-09T17:33:28.502019+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/community/astonishing-travels-field-notes-lara-croft-what-lies-beneath-st-francis-folly": {
+      "fingerprint": "744551a22288bdea42a99e3ccb2cbf8c38059cdc2e2996c3be7fbff16c0d71e4",
+      "title": "Astonishing Travels - Field Notes: Lara Croft. What Lies Beneath St. Francis’ Folly?",
+      "first_seen": "2026-11-09T17:33:29.660427+00:00",
+      "last_seen": "2026-11-09T17:33:29.660436+00:00",
+      "category": "NUEVO"
+    },
+    "https://www.tombraider.com/news/community/tomb-raider-legacy-of-atlantis-character-cards": {
+      "fingerprint": "5ee1be97fce222dc95ebe78bcede38a60ab09b29b58ce32f97b245e1959efa30",
+      "title": "Tomb Raider: Legacy of Atlantis - Character Cards",
+      "first_seen": "2026-11-09T17:33:30.695397+00:00",
+      "last_seen": "2026-11-09T17:33:30.695409+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/community/the-society-of-raiders": {
+      "fingerprint": "6b3ff98651f754f41119ec7a9aded39f95076b163973b7622ffcbf79376fe29c",
+      "title": "The Society of Raiders",
+      "first_seen": "2026-11-09T17:33:31.772568+00:00",
+      "last_seen": "2026-11-09T17:33:31.772579+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/community/a-letter-from-t-e-croft-ancestor-of-lara-croft": {
+      "fingerprint": "e2bc19f35b6025a4370a4451a8c7171c9689a13f5ab4e55213bee4f33392c495",
+      "title": "A letter from T.E. Croft, Ancestor of Lara Croft",
+      "first_seen": "2026-11-09T17:33:32.826752+00:00",
+      "last_seen": "2026-11-09T17:33:32.826765+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://www.tombraider.com/news/community/astonishing-travels-field-notes-lara-croft-tracking-the-tomb-raider-to-the-andes": {
+      "fingerprint": "e05367d539398f8d4199765861b5603553bc0d416693d0b5d7ee77960264a562",
+      "title": "Astonishing Travels - Field Notes: Lara Croft. Tracking “the Tomb Raider” to the Andes",
+      "first_seen": "2026-11-09T17:33:33.959359+00:00",
+      "last_seen": "2026-11-09T17:33:33.959372+00:00",
+      "category": "AMPLIACIÓN"
+    },
+    "https://crystaldynamics.com/news-community": {
+      "fingerprint": "332476d814c887a791d251633f3635d15fe1a41544aaf2276a4b809f0ff5d6ca",
+      "title": "News & Community – Crystal Dynamics",
+      "first_seen": "2026-11-09T17:33:36.071674+00:00",
+      "last_seen": "2026-11-09T17:33:36.071688+00:00",
+      "category": "FECHA PENDIENTE"
+    },
+    "https://crystaldynamics.com/news-community/fandom": {
+      "fingerprint": "6084d08717b541000bd1cd6055a31c69006d6926149973053278db189d22cf30",
+      "title": "Fandom",
+      "first_seen": "2026-11-09T17:33:37.003822+00:00",
+      "last_seen": "2026-11-09T17:33:37.003833+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://www.netflix.com/tudum/articles/tomb-raider-legend-of-lara-croft": {
+      "fingerprint": "2f9ee663089515dc6db6de3a664ec8d4fa935711ad46043a4c98589a777ed299",
+      "title": "Tomb Raider: The Legend of Lara Croft Animated Series Trailer, Release Date, Voice Cast, Plot - Netflix Tudum",
+      "first_seen": "2026-11-09T17:33:38.715407+00:00",
+      "last_seen": "2026-11-09T17:33:38.715420+00:00",
+      "category": "FECHA PENDIENTE"
+    },
+    "https://www.aboutamazon.com/news/entertainment/tomb-raider-prime-video-phoebe-waller-bridge-sophie-turner": {
+      "fingerprint": "bae696926f83d1743400ad97517abb5653fac40bf313fd49ecbb611f187ff742",
+      "title": "Prime Video debuts Sophie Turner’s fierce new look as Lara Croft in new series ‘Tomb Raider’",
+      "first_seen": "2026-11-09T17:33:39.638169+00:00",
+      "last_seen": "2026-11-09T17:33:39.638176+00:00",
+      "category": "DUPLICADO"
+    },
+    "https://www.aboutamazon.com/news/entertainment/amazon-game-studios-lara-croft-tomb-raider-new-games": {
+      "fingerprint": "ffa46ba3c6284019392c7c572547095dc6d93c831e683f6d408a67f4fb736ae8",
+      "title": "Amazon Game Studios announces two new ‘Tomb Raider’ games coming in 2026 and 2027",
+      "first_seen": "2026-11-09T17:33:40.779731+00:00",
+      "last_seen": "2026-11-09T17:33:40.779737+00:00",
+      "category": "HISTÓRICO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/38792975858573-Tomb-Raider-IV-VI-Remastered-Patch-2": {
+      "fingerprint": "feab32287e0667a09a12da1d6b375f88d01766244e928de3162aa5fdb99d7c64",
+      "title": "*Now Available*",
+      "first_seen": "2026-11-09T17:33:41.876815+00:00",
+      "last_seen": "2026-11-09T17:33:41.876827+00:00",
+      "category": "FECHA PENDIENTE"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/40068858882189-A-Message-to-the-Tomb-Raider-Community": {
+      "fingerprint": "21715113ce1b86dc05626dd326617322a231ff0637e985fd5c0983b67246b12a",
+      "title": "A Message to the Tomb Raider Community – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:42.431846+00:00",
+      "last_seen": "2026-11-09T17:33:42.431858+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/39710879443853-Tomb-Raider-IV-VI-Remastered-Hotfix-for-Patch-2": {
+      "fingerprint": "fbe2f10b51f93021eeb885fa3dfbd18fbd38a659f222379ac91bef0ccf96b5c0",
+      "title": "Tomb Raider IV-VI Remastered | Hotfix for Patch 2 – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:43.052323+00:00",
+      "last_seen": "2026-11-09T17:33:43.052335+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/35958795828237-Tomb-Raider-IV-VI-Remastered-Patch-1": {
+      "fingerprint": "ce0aac854a4006b08a06f462304ff6f61d90be9a6b58be012d5ab21c60cbe56a",
+      "title": "Tomb Raider IV-VI Remastered Patch 1 – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:43.853460+00:00",
+      "last_seen": "2026-11-09T17:33:43.853472+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/34261264834573-Tomb-Raider-IV-VI-Remastered-AVAILABLE-NOW": {
+      "fingerprint": "c8223af5f3e2ed3484f0edb57bab850b463e6a1863c496dbe22faf7d07ca22e9",
+      "title": "Tomb Raider IV-VI Remastered AVAILABLE NOW! – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:44.468010+00:00",
+      "last_seen": "2026-11-09T17:33:44.468021+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/49416285853325-Tomb-Raider-I-III-Remastered-Challenge-Mode-Patch-4": {
+      "fingerprint": "ec9aff6ce6bfd907332fe7413b89acea463ddb5ac14151ba51febcd7af7de14e",
+      "title": "Tomb Raider I-III Remastered: Challenge Mode Patch 4 – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:45.279608+00:00",
+      "last_seen": "2026-11-09T17:33:45.279620+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/48286884706957-Tomb-Raider-I-III-Remastered-Challenge-Mode-Patch-3-Community-Update": {
+      "fingerprint": "6d939e5c8f61e3287e76c13ec5739d88092c558d28ba53c7f0366a548c846dfd",
+      "title": "Tomb Raider I-III Remastered: Challenge Mode Patch 3: Community Update – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:45.930296+00:00",
+      "last_seen": "2026-11-09T17:33:45.930309+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/45503999754637-Tomb-Raider-I-III-Remastered-Challenge-Mode-Patch-2": {
+      "fingerprint": "07ce8817ba397fba310562a0aff78086404e0d8dc65981d55c08f82ae0b778e8",
+      "title": "Tomb Raider I-III Remastered: Challenge Mode Patch 2 – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:46.558432+00:00",
+      "last_seen": "2026-11-09T17:33:46.558444+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/44733082627085-Tomb-Raider-I-III-Remastered-Challenge-Mode-Patch-1": {
+      "fingerprint": "9fb01abdd019327e470b3f42db12e044b0bce035247d0aa97794b0891843fba8",
+      "title": "Tomb Raider I-III Remastered: Challenge Mode Patch 1 – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:47.232495+00:00",
+      "last_seen": "2026-11-09T17:33:47.232507+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/44470259051661-A-Message-to-the-Tomb-Raider-Community": {
+      "fingerprint": "ba8349cae2d20fe10cab7fa18a6cc915d9a027a08b23b77b5803f797e1837c4f",
+      "title": "A Message to the Tomb Raider Community – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:47.857728+00:00",
+      "last_seen": "2026-11-09T17:33:47.857741+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/44235124968589-Tomb-Raider-I-III-Remastered-Challenge-Mode-Update-Patch-Notes": {
+      "fingerprint": "41082675ac94e392b28ddc0bee21ad8b265b1ac262ef5a580fff5b6b2b2dd827",
+      "title": "Tomb Raider I-III Remastered: Challenge Mode Update | Patch Notes – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:48.551580+00:00",
+      "last_seen": "2026-11-09T17:33:48.551593+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/24063210653197-Cheats-Tomb-Raider-I-III-Remastered": {
+      "fingerprint": "7dc6dd949f375ec816bb41a1fba3bbad6a38da54e7a99f11d38a341825c5e56b",
+      "title": "Cheats - Tomb Raider I-III Remastered – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:49.144796+00:00",
+      "last_seen": "2026-11-09T17:33:49.144809+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/31596954576781-Tomb-Raider-I-III-Remastered-Update-4-Patch-Notes": {
+      "fingerprint": "9a9a52c914602cd8ac96030a3010aa0c276e31cba34177ee475f6167cfe4c152",
+      "title": "Tomb Raider I-III Remastered - Update 4 | Patch Notes – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:49.766888+00:00",
+      "last_seen": "2026-11-09T17:33:49.766910+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/27331962783501-Tomb-Raider-I-III-Remastered-Update-3-Patch-Notes": {
+      "fingerprint": "8e84a8149f9e0def220a2d0e83ea8d2f66b9f8bdf29ec2441aec74b54fb0eb69",
+      "title": "Tomb Raider I-III Remastered - Update 3 | Patch Notes – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:50.438539+00:00",
+      "last_seen": "2026-11-09T17:33:50.438552+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/25812210403469-Tomb-Raider-I-III-Remastered-Update-2-Patch-Notes": {
+      "fingerprint": "f83a6753159aadb2f7b80c0c0c3ab2d4404f3a85d5abefcaa177d6a15ed1b55e",
+      "title": "Tomb Raider I-III Remastered - Update 2 | Patch Notes – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:51.059827+00:00",
+      "last_seen": "2026-11-09T17:33:51.059840+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/24938284088845-Tomb-Raider-I-III-Remastered-Update-1-Patch-Notes": {
+      "fingerprint": "d9188029d2d58e318913d16aa3ca54827462f6cbed599a888265d10796e2c324",
+      "title": "Tomb Raider I-III Remastered - Update 1 | Patch Notes – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:51.640462+00:00",
+      "last_seen": "2026-11-09T17:33:51.640475+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/26244383712269-Tomb-Raider-I-III-Remastered-Patch-2-Posters": {
+      "fingerprint": "9667068730c9104a552b952d2d6f9ea9e089a95aa4c23b371958ef5c48c338c6",
+      "title": "Tomb Raider I-III Remastered | Patch 2 - Posters – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:52.405972+00:00",
+      "last_seen": "2026-11-09T17:33:52.405984+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://support.aspyr.com/hc/en-us/articles/29229194601485-Update-Tomb-Raider-I-III-Physical-Editions-Release": {
+      "fingerprint": "7f96bbdab50ab41908d82b1a80d259b980da7edd511e5333b2d380cef1a2eb69",
+      "title": "Update: Tomb Raider I-III Physical Editions Release – Aspyr Support",
+      "first_seen": "2026-11-09T17:33:53.061292+00:00",
+      "last_seen": "2026-11-09T17:33:53.061304+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://gear.tombraider.com/collections/collectibles": {
+      "fingerprint": "26a3d7b82bfe85624b38a8728f1d1c85fa5ad6ad3912fdef82991908b392879a",
+      "title": "Collectibles",
+      "first_seen": "2026-11-09T17:33:54.648360+00:00",
+      "last_seen": "2026-11-09T17:33:54.648374+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-game-of-the-year-edition": {
+      "fingerprint": "c07efe47b940c9b69dbcd538120f862beb01c67615381b332966313587661e75",
+      "title": "Tomb Raider GAME OF THE YEAR EDITION",
+      "first_seen": "2026-11-09T17:34:15.395454+00:00",
+      "last_seen": "2026-11-09T17:34:15.395466+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/rise-of-the-tomb-raider-20-year-celebration": {
+      "fingerprint": "fb40894d3f367e673169bbf43f632cc9721b175b617fc2dc433c7e595d002c84",
+      "title": "Rise of the Tomb Raider: 20 Year Celebration",
+      "first_seen": "2026-11-09T17:34:16.061278+00:00",
+      "last_seen": "2026-11-09T17:34:16.061291+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/shadow-of-the-tomb-raider-definitive-edition": {
+      "fingerprint": "c16dc83faca85943a01dc69cb170cc9e9fdd366a2336670e143f217c2d958cdd",
+      "title": "Shadow of the Tomb Raider Definitive Edition",
+      "first_seen": "2026-11-09T17:34:16.712592+00:00",
+      "last_seen": "2026-11-09T17:34:16.712604+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-croft-crest-christmas-wrapping-paper?variant=55192893096279": {
+      "fingerprint": "45c47ea3fa27dbfec8dfbabd12d5decf7f7db0dd7879160dfa2d8bd5f6404e90",
+      "title": "Tomb Raider Croft Crest Christmas Wrapping Paper",
+      "first_seen": "2026-11-09T17:34:23.534147+00:00",
+      "last_seen": "2026-11-09T17:34:23.534160+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/gizeh-double-sided-ceramic-ornaments?variant=55731720094039": {
+      "fingerprint": "024976bd91ab33bc8a2b91bf25b96bbcfd24670dc6cee45344773c3d3cc5cdfb",
+      "title": "Giza Double-sided ceramic ornaments",
+      "first_seen": "2026-11-09T17:34:17.410939+00:00",
+      "last_seen": "2026-11-09T17:34:17.410952+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/lara-croft-classic-sun-glasses?variant=53617910939991": {
+      "fingerprint": "c4902bcf7a88b79e2d9b8372643072c042421d27100f0c709794041fe663fb78",
+      "title": "Lara Croft Classic Sun Glasses",
+      "first_seen": "2026-11-09T17:34:26.043721+00:00",
+      "last_seen": "2026-11-09T17:34:26.043733+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/lara-croft-angel-of-darkness-sun-glasses?variant=53617904091479": {
+      "fingerprint": "4b4e95cde8743160757d2449e892e5cb4d14e842bf5a52b78d080d3dbe39ac12",
+      "title": "Lara Croft Angel of Darkness Sun Glasses",
+      "first_seen": "2026-11-09T17:34:26.682759+00:00",
+      "last_seen": "2026-11-09T17:34:26.682772+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/legacy-of-atlantis-egypt-concept-art-poster?variant=55655567032663": {
+      "fingerprint": "3b081a3f19d2403de0fdc8522e46d7d892160083eff4d7c4198a8be0a7694af4",
+      "title": "Legacy of Atlantis Egypt Concept Art Poster",
+      "first_seen": "2026-11-09T17:34:22.164397+00:00",
+      "last_seen": "2026-11-09T17:34:22.164410+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/legacy-of-atlantis-greece-concept-art-poster?variant=55655585349975": {
+      "fingerprint": "e0efeda71237a21765329f0d97616b2ef5091752684bbbce15c612a90223e056",
+      "title": "Legacy of Atlantis Greece Concept Art Poster",
+      "first_seen": "2026-11-09T17:34:21.532492+00:00",
+      "last_seen": "2026-11-09T17:34:21.532505+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/legacy-of-atlantis-peru-concept-art-poster?variant=55655601045847": {
+      "fingerprint": "f6e1f55131856f56a95c1ef27467f95eaaa24e154deaaa2f3b779bd15dc83e92",
+      "title": "Legacy of Atlantis Peru Concept Art Poster",
+      "first_seen": "2026-11-09T17:34:20.878818+00:00",
+      "last_seen": "2026-11-09T17:34:20.878830+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-retro-slap-bracelet?variant=54877395059031": {
+      "fingerprint": "3f2b157fe6925061202d09df2c161bb05ce12fb55627fb5a95963a74bc7bcca2",
+      "title": "Tomb Raider Retro Slap Bracelet",
+      "first_seen": "2026-11-09T17:34:02.627222+00:00",
+      "last_seen": "2026-11-09T17:34:02.627234+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-retro-throwback-playmat?variant=54877394501975": {
+      "fingerprint": "f35597e3bb524cd742862574aa72ebace1b1f635a5a066f3668ebfe5094e5672",
+      "title": "Tomb Raider Retro Throwback Playmat",
+      "first_seen": "2026-11-09T17:34:03.307678+00:00",
+      "last_seen": "2026-11-09T17:34:03.307691+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-gray-slap-bracelet?variant=54877394469207": {
+      "fingerprint": "8957648f50e05082d8c00819a58a095776b88d5a6aa4f27ee312a6b73f4b27f3",
+      "title": "Tomb Raider Gray Slap Bracelet",
+      "first_seen": "2026-11-09T17:34:03.942712+00:00",
+      "last_seen": "2026-11-09T17:34:03.942725+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/lara-30th-polygonal-history-metal-print?variant=54877394436439": {
+      "fingerprint": "44c9a0e16f7be20e0a6f2087571e4e7e0fec774e0261a951a8501a8b9fb6031e",
+      "title": "Lara 30th Polygonal History Metal Print",
+      "first_seen": "2026-11-09T17:34:24.146953+00:00",
+      "last_seen": "2026-11-09T17:34:24.146965+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-30th-anniversary-pin?variant=54877394403671": {
+      "fingerprint": "1fa5612cf23eb4c4e229f9c5c9cdd414ae0efe2dc24b7a22e9de30babe9ee818",
+      "title": "Tomb Raider 30th Anniversary Pin",
+      "first_seen": "2026-11-09T17:34:05.279402+00:00",
+      "last_seen": "2026-11-09T17:34:05.279414+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/lara-croft-polygonal-history-poster?variant=54877393650007": {
+      "fingerprint": "a62e507615a102b2c5fca5fd32c08655632956e0db3d61d081f4eb2c4694a98a",
+      "title": "Lara Croft Polygonal History Poster",
+      "first_seen": "2026-11-09T17:34:24.759778+00:00",
+      "last_seen": "2026-11-09T17:34:24.759791+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/gaming-mouse-pad?variant=52979200164183": {
+      "fingerprint": "d9446b3f343abf638719d4fbbc3e820e8a4dccffe279a691a02cac001fa2f90e",
+      "title": "30th Anniversary Gaming mouse pad",
+      "first_seen": "2026-11-09T17:34:06.623170+00:00",
+      "last_seen": "2026-11-09T17:34:06.623182+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-winston-ice-cube-mold?variant=54043171881303": {
+      "fingerprint": "c1631c7c11c5f341d4b2307efb0582c4e947e56d94e7aa57b865d67c0940e674",
+      "title": "Tomb Raider Winston Ice Cube Mold",
+      "first_seen": "2026-11-09T17:34:25.406646+00:00",
+      "last_seen": "2026-11-09T17:34:25.406658+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-30th-anniversary-coffee-mug-white?variant=53377024557399": {
+      "fingerprint": "cdd288b4d21521a6e924724eb5cb4fa65174b19f9c782d18171710838dd65ea5",
+      "title": "Tomb Raider 30th Anniversary Coffee Mug - White",
+      "first_seen": "2026-11-09T17:34:31.505234+00:00",
+      "last_seen": "2026-11-09T17:34:31.505247+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-30th-anniversary-coffee-mug-black?variant=53368550457687": {
+      "fingerprint": "314ea303e5b0e8d8566a5d9d657473edfe3b2e0f9a869962dcf3799274dae67a",
+      "title": "Tomb Raider 30th Anniversary Coffee Mug - Black",
+      "first_seen": "2026-11-09T17:34:32.152843+00:00",
+      "last_seen": "2026-11-09T17:34:32.152855+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/laptop-sleeve?variant=53060324786519": {
+      "fingerprint": "2556c6f65163b80a5153155f70a15d3f895f257a48f32e7911786f825b339225",
+      "title": "30th Anniversary Laptop Sleeve",
+      "first_seen": "2026-11-09T17:34:32.807035+00:00",
+      "last_seen": "2026-11-09T17:34:32.807047+00:00",
+      "category": "DESCARTADO"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-lara-croft-tubbz-mini-edition?variant=53059460923735": {
+      "fingerprint": "9b4fc8fea94761c598454a6118df3182d96e7b7dde0be3561afc3868f2ad975c",
+      "title": "Tomb Raider: Lara Croft TUBBZ (Mini Edition)",
+      "first_seen": "2026-11-09T17:34:10.120364+00:00",
+      "last_seen": "2026-11-09T17:34:10.120377+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-classic-lara-croft-tubbz-boxed-edition?variant=53059452666199": {
+      "fingerprint": "01d0e93b0d3e5821e230343c61c61ac4de659ff56f094a9f3131d87855fbf20f",
+      "title": "Tomb Raider: Classic Lara Croft TUBBZ (Boxed Edition)",
+      "first_seen": "2026-11-09T17:34:10.807569+00:00",
+      "last_seen": "2026-11-09T17:34:10.807581+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-ii-metal-print-pre-order?variant=52797248569687": {
+      "fingerprint": "cd6e783b18b617433ff022dfc7a9d93a2b3ef14cfc3190911fa05181cbdc56c5",
+      "title": "Tomb Raider II Metal Print",
+      "first_seen": "2026-11-09T17:34:11.453760+00:00",
+      "last_seen": "2026-11-09T17:34:11.453772+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-ii-poster-pre-order?variant=52797248471383": {
+      "fingerprint": "5b686e89690f255d99d2001797d71846b956238bb3ffb64709ccac2b221fbce6",
+      "title": "Tomb Raider II Poster",
+      "first_seen": "2026-11-09T17:34:12.107443+00:00",
+      "last_seen": "2026-11-09T17:34:12.107456+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-survivor-30th-anniversary-standee-pre-order?variant=52797248209239": {
+      "fingerprint": "3a79f5aeff2b2a17ba96908f026057016afa908acc8cd149e7ec616053104064",
+      "title": "Tomb Raider Survivor - 30th Anniversary Standee",
+      "first_seen": "2026-11-09T17:34:12.742221+00:00",
+      "last_seen": "2026-11-09T17:34:12.742233+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-ii-30th-anniversary-standee-pre-order?variant=52797248176471": {
+      "fingerprint": "003b02cb65964ea1d84c64fda126ff277a5b72ee46bf8db5ef01eb55d217c2e0",
+      "title": "Tomb Raider II - 30th Anniversary Standee",
+      "first_seen": "2026-11-09T17:34:13.368978+00:00",
+      "last_seen": "2026-11-09T17:34:13.368991+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/collections/merch": {
+      "fingerprint": "f2edb2efab9cd6eae064dc11c79ca4864e4a4b43c806b15c9ddcf43b817c4c28",
+      "title": "Merch",
+      "first_seen": "2026-11-09T17:34:14.708802+00:00",
+      "last_seen": "2026-11-09T17:34:14.708816+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/legacy-of-atlantis-official-logo-travel-mug-with-a-handle?variant=55655799292247": {
+      "fingerprint": "14f8f0830f523fc7c4c1516ca877b10d2178c2135f43424c628d3056635b33c9",
+      "title": "Legacy of Atlantis Lara Croft Travel mug with a handle",
+      "first_seen": "2026-11-09T17:34:18.083360+00:00",
+      "last_seen": "2026-11-09T17:34:18.083373+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/stainless-steel-tumbler-1?variant=55655779664215": {
+      "fingerprint": "7d9544c71790ef6c962c7ff34164ba444e38d27f6c430969f160ab2dcae80d82",
+      "title": "Legacy of Atlantis Lara Croft Stainless steel tumbler",
+      "first_seen": "2026-11-09T17:34:18.717266+00:00",
+      "last_seen": "2026-11-09T17:34:18.717279+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/legacy-of-atlantis-official-logo-can-shaped-glass?variant=55655723925847": {
+      "fingerprint": "0c7f1e3c000cae8bf01c9712519db162ccb466b1fc8d0d6197f37c67f32d05ef",
+      "title": "Legacy of Atlantis Official Logo Can-shaped glass",
+      "first_seen": "2026-11-09T17:34:19.473757+00:00",
+      "last_seen": "2026-11-09T17:34:19.473770+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/legacy-of-atlantis-lara-croft-stainless-steel-water-bottle?variant=55655656980823": {
+      "fingerprint": "eba6ed97fe424e0ee6ec0410ec00d46570605fe9889a40ad0c2c2062dd754251",
+      "title": "Legacy of Atlantis Lara Croft - Stainless steel water bottle",
+      "first_seen": "2026-11-09T17:34:20.226680+00:00",
+      "last_seen": "2026-11-09T17:34:20.226693+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-loa-logo-coffee-mug-white?variant=55647509741911": {
+      "fingerprint": "f1253409086726823678a27c1ee9005d45e96247c2e4ccc8beddba0e413f44ab",
+      "title": "Legacy of Atlantis Official Logo Coffee Mug - White",
+      "first_seen": "2026-11-09T17:34:22.859424+00:00",
+      "last_seen": "2026-11-09T17:34:22.859438+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-lara-vs-bear-coffee-mug-white?variant=53377041826135": {
+      "fingerprint": "2b738d376cb6f0063e68fea94bdbe1ccb7b00167f2c0488e0c7e0c97e727bf8c",
+      "title": "Tomb Raider Lara vs Bear Coffee Mug - White",
+      "first_seen": "2026-11-09T17:34:27.396004+00:00",
+      "last_seen": "2026-11-09T17:34:27.396018+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-lara-vs-bear-coffee-mug-black?variant=53377039991127": {
+      "fingerprint": "e47a771754c5510f90d720448f45166aa341ba27d8a9dee3d5a1ca5e881503d7",
+      "title": "Tomb Raider Lara vs Bear Coffee Mug - Black",
+      "first_seen": "2026-11-09T17:34:28.081044+00:00",
+      "last_seen": "2026-11-09T17:34:28.081057+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-from-giza-with-love-coffee-mug-white?variant=53377036550487": {
+      "fingerprint": "05ad0dc7dd2cbe40b283498f5a9a6fd9bccd91d53e4fc3ef13b1bdd377db1b89",
+      "title": "Tomb Raider From Giza with Love Coffee Mug - White",
+      "first_seen": "2026-11-09T17:34:28.772988+00:00",
+      "last_seen": "2026-11-09T17:34:28.773000+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-from-giza-with-love-coffee-mug-black?variant=53377033240919": {
+      "fingerprint": "76038ea7182d8af92aabe8b330a21cf539f1fae54d3c34190915c7200b8876a1",
+      "title": "Tomb Raider From Giza with Love Coffee Mug - Black",
+      "first_seen": "2026-11-09T17:34:29.416509+00:00",
+      "last_seen": "2026-11-09T17:34:29.416522+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-adventure-begins-coffee-mug-white?variant=53377030029655": {
+      "fingerprint": "a8bd1075c82dcaebca0a208883bff94abd81a80b06e2c5259a9d7af16b53e342",
+      "title": "Tomb Raider Adventure Begins Coffee Mug - White",
+      "first_seen": "2026-11-09T17:34:30.108212+00:00",
+      "last_seen": "2026-11-09T17:34:30.108225+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://gear.tombraider.com/products/tomb-raider-adventure-begins-coffee-mug-black?variant=53377026490711": {
+      "fingerprint": "c413b08d04f4a2a31be166270fdc2af7d0023f5fd8bec0cb86406427f786b0d1",
+      "title": "Tomb Raider Adventure Begins Coffee Mug - Black",
+      "first_seen": "2026-11-09T17:34:30.816863+00:00",
+      "last_seen": "2026-11-09T17:34:30.816875+00:00",
+      "category": "ACTUALIZACIÓN"
+    },
+    "https://digital.darkhorse.com/series/345/tomb-raider": {
+      "fingerprint": "980a6e7d776bb56bf707ef6a130767e9add9a98ac56994d6a8b275f5a5ea9604",
+      "title": "Tomb Raider",
+      "first_seen": "2026-11-09T17:34:34.390525+00:00",
+      "last_seen": "2026-11-09T17:34:34.390536+00:00",
+      "category": "ACTUALIZACIÓN"
+    }
+  }
+}
