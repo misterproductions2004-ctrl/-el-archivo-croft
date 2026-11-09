@@ -1,38 +1,305 @@
+import json
+import os
+import re
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
-name: Croft Watch
+import requests
+from bs4 import BeautifulSoup
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "30 */6 * * *"
+SOURCES = [
+    {"name": "Tomb Raider Official", "url": "https://www.tombraider.com/news/all",
+     "host": "www.tombraider.com", "kind": "tr"},
+    {"name": "Crystal Dynamics", "url": "https://www.crystaldynamics.com/news-community/",
+     "host": "www.crystaldynamics.com", "kind": "cd"},
+]
+STATE = Path("data/croft_watch_seen.json")
+REPORT = Path("data/pendiente_revision.md")
+MAX_AGE_DAYS = 30
+HEADERS = {"User-Agent": "ElArchivoCroft-CroftWatch/2.0 (official-publication-monitor)"}
+SESSION = requests.Session()
+SESSION.headers.update(HEADERS)
 
-permissions:
-  contents: read
 
-jobs:
-  monitor:
-    runs-on: ubuntu-latest
+def now_utc():
+    return datetime.now(timezone.utc)
 
-    steps:
-      - name: Descargar repositorio
-        uses: actions/checkout@v7
 
-      - name: Preparar Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
+def normalize(url):
+    p = urlsplit(url)
+    path = re.sub(r"/+", "/", p.path).rstrip("/") or "/"
+    return urlunsplit((p.scheme.lower(), p.netloc.lower(), path, "", ""))
 
-      - name: Instalar dependencias
-        run: pip install -r requirements.txt
 
-      - name: Ejecutar Croft Watch
-        run: python scripts/croft_watch.py
+def allowed(url, host):
+    p = urlsplit(url)
+    return p.scheme == "https" and p.hostname == host
 
-      - name: Guardar informe
-        uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: croft-watch-review
-          path: data/pendiente_revision.md
-          if-no-files-found: ignore
-          retention-days: 30
+
+def article_url(url, source):
+    if not allowed(url, source["host"]):
+        return False
+    path = urlsplit(url).path.lower().strip("/")
+    if not path:
+        return False
+    blocked = ("contact", "press", "privacy", "terms", "login", "account",
+               "category", "tag", "author", "search", "community-creations")
+    if any(word in path for word in blocked):
+        return False
+    if source["kind"] == "tr":
+        parts = path.split("/")
+        return (len(parts) == 3 and parts[0] == "news"
+                and parts[1] in {"community", "video-games", "collaborations"}
+                and len(parts[2]) >= 8)
+    parts = [x for x in path.split("/") if x]
+    return len(parts) >= 2 and path not in {"news-community"}
+
+
+def get_soup(url):
+    response = SESSION.get(url, timeout=25)
+    response.raise_for_status()
+    if "text/html" not in response.headers.get("Content-Type", "").lower():
+        raise ValueError("La dirección no devolvió HTML.")
+    return BeautifulSoup(response.text, "html.parser")
+
+
+def parse_date(value):
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(value.strip().replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except ValueError:
+        for fmt in ("%Y-%m-%d", "%B %d, %Y", "%b %d, %Y"):
+            try:
+                return datetime.strptime(value.strip(), fmt).replace(tzinfo=timezone.utc)
+            except ValueError:
+                pass
+    return None
+
+
+def json_objects(value):
+    if isinstance(value, dict):
+        yield value
+        for v in value.values():
+            yield from json_objects(v)
+    elif isinstance(value, list):
+        for v in value:
+            yield from json_objects(v)
+
+
+def published_date(soup):
+    selectors = [
+        ('meta[property="article:published_time"]', "content"),
+        ('meta[property="og:published_time"]', "content"),
+        ('meta[name="date"]', "content"),
+        ('meta[name="publish-date"]', "content"),
+        ("time[datetime]", "datetime"),
+    ]
+    for selector, attr in selectors:
+        tag = soup.select_one(selector)
+        if tag and parse_date(tag.get(attr)):
+            return parse_date(tag.get(attr))
+    for tag in soup.select('script[type="application/ld+json"]'):
+        try:
+            data = json.loads(tag.string or tag.get_text())
+        except (ValueError, TypeError):
+            continue
+        for obj in json_objects(data):
+            for key in ("datePublished", "dateCreated"):
+                dt = parse_date(obj.get(key))
+                if dt:
+                    return dt
+    return None
+
+
+def author_name(soup):
+    for selector, attr in [
+        ('meta[name="author"]', "content"),
+        ('meta[property="article:author"]', "content"),
+        ('a[rel="author"]', None), (".author", None), (".byline", None),
+    ]:
+        tag = soup.select_one(selector)
+        if tag:
+            value = tag.get(attr) if attr else tag.get_text(" ", strip=True)
+            if value and value.strip():
+                return " ".join(value.split())[:160]
+    return "No identificado en metadatos visibles"
+
+
+def body_text(soup):
+    for node in soup.select("nav, footer, header, aside, script, style, noscript"):
+        node.decompose()
+    for selector in ("article", "main", ".entry-content", ".post-content",
+                     ".article-content", "[itemprop='articleBody']"):
+        node = soup.select_one(selector)
+        if node:
+            text = " ".join(node.get_text(" ", strip=True).split())
+            if len(text) >= 250:
+                return text
+    return " ".join(soup.get_text(" ", strip=True).split())
+
+
+def discover(source):
+    soup = get_soup(source["url"])
+    found = {}
+    for a in soup.find_all("a", href=True):
+        if a.find_parent(["nav", "footer", "header", "aside"]):
+            continue
+        url = normalize(urljoin(source["url"], a["href"]))
+        label = " ".join(a.get_text(" ", strip=True).split())
+        if len(label) < 12 or not article_url(url, source):
+            continue
+        found[url] = {"url": url, "listing_title": label[:240],
+                      "source": source["name"], "host": source["host"]}
+    return list(found.values())
+
+
+def verify(item):
+    result = dict(item)
+    try:
+        soup = get_soup(item["url"])
+        canonical = soup.select_one('link[rel="canonical"]')
+        canonical_url = normalize(urljoin(item["url"], canonical["href"])) if canonical and canonical.get("href") else item["url"]
+        if not allowed(canonical_url, item["host"]):
+            raise ValueError("La URL canónica no pertenece al dominio oficial.")
+        h1 = soup.find("h1")
+        title = " ".join(h1.get_text(" ", strip=True).split()) if h1 else ""
+        if len(title) < 8:
+            raise ValueError("No se encontró un título principal.")
+        date = published_date(soup)
+        if not date:
+            raise ValueError("No se encontró una fecha de publicación verificable.")
+        if date > now_utc() + timedelta(days=1):
+            raise ValueError("La fecha detectada está en el futuro.")
+        body = body_text(soup)
+        if len(body) < 250:
+            raise ValueError("El contenido de la página es demasiado escaso.")
+        result.update({
+            "url": canonical_url, "title": title, "published_at": date.isoformat(),
+            "author": author_name(soup), "ok": True,
+            "verification": "Dominio oficial, título, fecha y cuerpo detectados",
+            "editorial_status": "Pendiente de revisión humana; no asumir canon",
+        })
+    except (requests.RequestException, ValueError, KeyError) as exc:
+        result.update({"ok": False, "verification": f"No verificada: {exc}",
+                       "editorial_status": "No incorporar; comprobación manual necesaria"})
+    return result
+
+
+def load_state():
+    if not STATE.exists():
+        return {"version": 2, "items": {}}
+    try:
+        data = json.loads(STATE.read_text(encoding="utf-8"))
+        if isinstance(data, dict) and isinstance(data.get("items"), dict):
+            return data
+    except (OSError, ValueError):
+        pass
+    print("AVISO: historial ilegible; se crea una línea base nueva.")
+    return {"version": 2, "items": {}}
+
+
+def write_report(entries, checked_at, first_run):
+    lines = [
+        "# Croft Watch — Pendiente de revisión editorial", "",
+        f"Revisión: {checked_at}", "",
+        "> La verificación automática solo comprueba que se pudo leer una página del dominio oficial y localizar título, fecha y texto. No confirma por sí sola que una afirmación sea canon. La aprobación editorial siempre es humana.", "",
+    ]
+    if first_run:
+        lines += ["## Primera ejecución: línea base", "",
+                  "El historial estaba vacío. Los artículos antiguos se registran como ya vistos y no se presentan como novedades. Solo se muestran publicaciones fechadas dentro de los últimos 30 días.", ""]
+    if not entries:
+        lines += ["No se encontraron publicaciones nuevas verificadas dentro de la ventana de vigilancia.", ""]
+    for item in entries:
+        lines += [
+            f"## {item.get('title', item.get('listing_title', 'Publicación sin título'))}", "",
+            f"- Fuente: {item['source']}",
+            f"- Enlace: {item['url']}",
+            f"- Fecha detectada: {item.get('published_at', 'No verificada')}",
+            f"- Autor visible: {item.get('author', 'No identificado')}",
+            f"- Verificación técnica: {item.get('verification', 'Pendiente')}",
+            f"- Estado editorial: {item.get('editorial_status', 'Pendiente')}", "",
+        ]
+    lines += [
+        "---", "", "## Reglas editoriales", "",
+        "- No usar rumores, filtraciones, wikis de fans ni medios no oficiales.",
+        "- No tratar material promocional, narrativo o especulativo como canon confirmado.",
+        "- Confirmar manualmente autoría, fecha, contexto y relevancia antes de incorporar información.",
+        "- Croft Watch no modifica index.html, no hace commits y no publica cambios.", "",
+    ]
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.write_text("\n".join(lines), encoding="utf-8")
+
+
+def main():
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    state = load_state()
+    seen = state["items"]
+    first_run = len(seen) == 0
+    now = now_utc()
+    cutoff = now - timedelta(days=MAX_AGE_DAYS)
+    checked_at = now.strftime("%Y-%m-%d %H:%M UTC")
+    report, inspected, errors = [], 0, 0
+
+    for source in SOURCES:
+        print(f"Revisando: {source['name']}")
+        try:
+            candidates = discover(source)
+            print(f"  Enlaces de artículo filtrados: {len(candidates)}")
+        except (requests.RequestException, ValueError) as exc:
+            errors += 1
+            print(f"  ERROR en listado: {exc}")
+            continue
+
+        for candidate in candidates:
+            url = candidate["url"]
+            if url in seen:
+                continue
+            inspected += 1
+            item = verify(candidate)
+            date = parse_date(item.get("published_at"))
+            recent = date is not None and date >= cutoff
+            if not item.get("ok"):
+                # No lo marcamos como visto: se volverá a intentar en la
+                # siguiente ejecución, por si fue un fallo temporal.
+                errors += 1
+                continue
+
+            if recent:
+                report.append(item)
+
+            # Los artículos antiguos se guardan como línea base, pero no se
+            # anuncian como novedades. Solo guardamos URLs verificadas.
+            seen[url] = {
+                "first_seen": now.isoformat(),
+                "published_at": item.get("published_at"),
+                "source": source["name"],
+                "verification": item.get("verification"),
+            }
+
+    state.update({"version": 2, "last_checked": now.isoformat(), "items": seen})
+    STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_report(report, checked_at, first_run)
+    print(f"Publicaciones nuevas para revisión: {len(report)}")
+    print(f"Enlaces nuevos inspeccionados: {inspected}")
+    print(f"Incidencias de verificación: {errors}")
+    print("La enciclopedia no ha sido modificada.")
+
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        Path(summary_path).write_text(
+            "## Croft Watch\n\n"
+            f"- Candidatos para revisión: **{len(report)}**\n"
+            f"- Enlaces nuevos inspeccionados: **{inspected}**\n"
+            f"- Incidencias de verificación: **{errors}**\n"
+            "- La enciclopedia no ha sido modificada.\n",
+            encoding="utf-8",
+        )
+
+
+if __name__ == "__main__":
+    main()
