@@ -1,7 +1,7 @@
 
 name: Croft Watch
 
-on:
+"on":
   workflow_dispatch:
   schedule:
     - cron: "30 */6 * * *"
@@ -12,7 +12,6 @@ permissions:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v7
@@ -26,7 +25,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: data/croft_watch_seen.json
-          key: croft-watch-${{ github.run_id }}
+          key: "croft-watch-${{ github.run_id }}"
           restore-keys: |
             croft-watch-
 
