@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+Thumbs.db
+# Historial operativo y copias de seguridad locales: no deben provocar commits diarios.
+data/logs/*.log
+!data/logs/.gitkeep
+data/backups/*.bak.html
+!data/backups/.gitkeep

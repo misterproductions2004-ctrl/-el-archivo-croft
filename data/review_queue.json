@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-10T00:00:00Z",
+  "items": [
+    {
+      "title": "Astonishing Travels: Greece",
+      "date": "2026-09-17",
+      "url": "https://www.playtombraider.com/en-us/news/articles/astonishing-travels-greece",
+      "source_id": "amazon_games_tombraider",
+      "source_name": "Tomb Raider — sitio oficial de Amazon Game Studios",
+      "reason": "Exclusión editorial de la exploración inicial: el propio artículo dice que sus estándares editoriales son más laxos y que la especulación forma parte de la publicación. No se presenta como hecho confirmado de la franquicia.",
+      "decision": "excluded_speculative_content"
+    }
+  ]
+}

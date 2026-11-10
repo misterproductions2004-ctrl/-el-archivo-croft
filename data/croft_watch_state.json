@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "initial_scan_completed": false,
+  "initial_scan_required": true,
+  "initial_window_days": 90,
+  "last_attempt_at": null,
+  "last_successful_scan_at": null,
+  "last_source_results": [],
+  "last_decision_counts": {},
+  "last_published_count": 0,
+  "http_cache": {},
+  "discovered_urls": {},
+  "notes": [
+    "Las 14 tarjetas iniciales proceden de una selección editorial manual contrastada con publicaciones oficiales.",
+    "La primera ejecución automática de GitHub Actions debe repetir el rastreo de los últimos 90 días; no se declara completada todavía."
+  ]
+}

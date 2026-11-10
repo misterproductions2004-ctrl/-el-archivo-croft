@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-10T00:00:00Z",
+  "policy": {
+    "only_verified_sources": true,
+    "require_explicit_franchise_relevance": true,
+    "respect_robots_txt": true,
+    "block_source_when_robots_cannot_be_checked": true,
+    "max_requests_per_host_per_second": 1,
+    "do_not_bypass_authentication_or_anti_bot_controls": true
+  },
+  "sources": [
+    {
+      "id": "tombraider_official",
+      "name": "Tomb Raider — sitio oficial",
+      "base_url": "https://www.tombraider.com/",
+      "listing_urls": [
+        "https://www.tombraider.com/news/all"
+      ],
+      "allowed_hosts": [
+        "tombraider.com"
+      ],
+      "article_path_regex": [
+        "^/news/(?!all$)[a-z0-9-]+/[^/]+$"
+      ],
+      "organization": "Crystal Dynamics group of companies",
+      "type": "portal oficial de la franquicia",
+      "categories": [
+        "VIDEOJUEGOS",
+        "CINE Y TELEVISIÓN",
+        "CÓMICS Y LIBROS",
+        "COMUNIDAD",
+        "EVENTOS OFICIALES",
+        "OTROS ANUNCIOS"
+      ],
+      "query_method": [
+        "HTML",
+        "sitemap si está publicado",
+        "RSS/Atom si está publicado",
+        "HTTP ETag/Last-Modified"
+      ],
+      "official_status": "verified",
+      "evidence_url": "https://www.tombraider.com/",
+      "evidence_note": "Dominio oficial de Tomb Raider; la propia página agrupa la actualidad de la franquicia y remite a los artículos originales.",
+      "verified_public_forum": false,
+      "max_articles_per_scan": 100,
+      "last_reviewed_at": "2026-11-10",
+      "last_checked_at": null
+    },
+    {
+      "id": "crystal_dynamics",
+      "name": "Crystal Dynamics — News & Community",
+      "base_url": "https://www.crystaldynamics.com/",
+      "listing_urls": [
+        "https://www.crystaldynamics.com/news-community/"
+      ],
+      "allowed_hosts": [
+        "crystaldynamics.com"
+      ],
+      "article_path_regex": [
+        "^/news/[^/]+/?$",
+        "^/news-community/[^/]+/?$"
+      ],
+      "organization": "Crystal Dynamics group of companies",
+      "type": "sitio oficial del desarrollador",
+      "categories": [
+        "VIDEOJUEGOS",
+        "DESARROLLO",
+        "CINE Y TELEVISIÓN",
+        "EVENTOS OFICIALES",
+        "OTROS ANUNCIOS"
+      ],
+      "query_method": [
+        "HTML",
+        "sitemap si está publicado",
+        "HTTP ETag/Last-Modified"
+      ],
+      "official_status": "verified",
+      "evidence_url": "https://www.crystaldynamics.com/news-community/",
+      "evidence_note": "Sitio corporativo oficial del estudio; la sección News & Community publica noticias del desarrollador y enlaces oficiales de Tomb Raider.",
+      "verified_public_forum": false,
+      "max_articles_per_scan": 80,
+      "last_reviewed_at": "2026-11-10",
+      "last_checked_at": null
+    },
+    {
+      "id": "amazon_games_tombraider",
+      "name": "Tomb Raider — sitio oficial de Amazon Game Studios",
+      "base_url": "https://www.playtombraider.com/",
+      "listing_urls": [
+        "https://www.playtombraider.com/en-us/news"
+      ],
+      "allowed_hosts": [
+        "playtombraider.com"
+      ],
+      "article_path_regex": [
+        "^/en-[a-z]{2}/news/articles/[^/]+$"
+      ],
+      "organization": "Crystal Dynamics (desarrollo) / Amazon Game Studios (publicación bajo licencia)",
+      "type": "portal oficial de producto y noticias del proyecto",
+      "categories": [
+        "PRÓXIMOS PROYECTOS",
+        "DESARROLLO",
+        "PERSONAJES Y UNIVERSO",
+        "ACTUALIZACIONES Y PARCHES",
+        "OTROS ANUNCIOS"
+      ],
+      "query_method": [
+        "HTML",
+        "sitemap si está publicado",
+        "HTTP ETag/Last-Modified"
+      ],
+      "official_status": "verified",
+      "evidence_url": "https://www.playtombraider.com/en-us/news",
+      "evidence_note": "La página legal del propio dominio indica que Tomb Raider está desarrollado por Crystal Dynamics y publicado por Amazon Game Studios bajo licencia.",
+      "verified_public_forum": false,
+      "max_articles_per_scan": 100,
+      "last_reviewed_at": "2026-11-10",
+      "last_checked_at": null
+    },
+    {
+      "id": "aspyr_support",
+      "name": "Aspyr Support — soporte oficial",
+      "base_url": "https://support.aspyr.com/",
+      "listing_urls": [
+        "https://support.aspyr.com/hc/en-us/sections/44234935752333-Updates",
+        "https://support.aspyr.com/hc/en-us/search?query=tomb%20raider"
+      ],
+      "allowed_hosts": [
+        "support.aspyr.com"
+      ],
+      "article_path_regex": [
+        "^/hc/en-us/articles/[0-9]+-[^/]+$"
+      ],
+      "organization": "Aspyr",
+      "type": "centro oficial de soporte y notas de actualización",
+      "categories": [
+        "ACTUALIZACIONES Y PARCHES",
+        "SOPORTE TÉCNICO",
+        "OTROS ANUNCIOS"
+      ],
+      "query_method": [
+        "HTML de resultados de búsqueda",
+        "sitemap si está publicado",
+        "HTTP ETag/Last-Modified"
+      ],
+      "official_status": "verified",
+      "evidence_url": "https://support.aspyr.com/hc/en-us/search?query=tomb%20raider",
+      "evidence_note": "Centro de soporte operado por Aspyr; los artículos consultados son notas de versión de sus ediciones y remasterizaciones de Tomb Raider.",
+      "verified_public_forum": false,
+      "max_articles_per_scan": 100,
+      "last_reviewed_at": "2026-11-10",
+      "last_checked_at": null
+    }
+  ],
+  "community_channels": [
+    {
+      "name": "Society of Raiders",
+      "url": "https://www.tombraider.com/",
+      "organization": "Tomb Raider / Crystal Dynamics",
+      "classification": "boletín y programa oficial de comunidad",
+      "is_public_discussion_forum": false,
+      "official_status": "verified",
+      "note": "El portal oficial lo describe como un canal de newsletter y recompensas; no se clasifica como foro público de debate."
+    }
+  ],
+  "verified_public_forums": [],
+  "candidate_sources": [
+    {
+      "name": "Amazon MGM Studios / Prime Video",
+      "official_status": "not_verified_for_tomb_raider_feed",
+      "note": "Añadir únicamente cuando exista un canal de noticias del proyecto Tomb Raider directamente enlazado por Amazon MGM Studios o Prime Video."
+    },
+    {
+      "name": "Netflix / Legendary Television",
+      "official_status": "not_verified_for_tomb_raider_feed",
+      "note": "Añadir únicamente publicaciones oficiales concretas sobre Tomb Raider: The Legend of Lara Croft."
+    },
+    {
+      "name": "Editoriales de cómics y libros con licencia",
+      "official_status": "not_verified_until_announced",
+      "note": "Incorporar solo páginas oficiales del editor/titular de licencia cuando exista una publicación directamente relacionada con Tomb Raider."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-10T00:00:00Z",
+  "window": {
+    "days": 90,
+    "from": "2026-08-12",
+    "through": "2026-11-10"
+  },
+  "result": "manual_official_article_review_preload",
+  "published_seed_count": 14,
+  "automated_initial_scan_completed": false,
+  "automated_scan_note": "La ejecución automática completa del crawler en GitHub Actions está pendiente. La sesión de trabajo no pudo resolver dominios externos desde el cliente HTTP de ejecución; no se presenta esta selección manual como resultado del crawler.",
+  "source_counts": {
+    "tombraider_official": 3,
+    "amazon_games_tombraider": 8,
+    "aspyr_support": 3,
+    "crystal_dynamics": 0
+  },
+  "accepted_urls": [
+    "https://www.tombraider.com/news/community/tomb-raider-turns-30-celebrate-with-lo-fi-album-and-exclusive-art",
+    "https://www.tombraider.com/news/community/raider-records-exploring-the-tomb-door-puzzle",
+    "https://support.aspyr.com/hc/en-us/articles/49416285853325-Tomb-Raider-I-III-Remastered-Challenge-Mode-Patch-4",
+    "https://www.playtombraider.com/en-us/news/articles/meet-larson",
+    "https://www.playtombraider.com/en-us/news/articles/enemies-of-egypt",
+    "https://www.playtombraider.com/en-us/news/articles/reimagining-egypt",
+    "https://www.playtombraider.com/en-us/news/articles/creatures-of-greece",
+    "https://www.playtombraider.com/en-us/news/articles/switch2-preorders",
+    "https://support.aspyr.com/hc/en-us/articles/48743849217165-Rise-of-the-Tomb-Raider-Patch-3-Notes",
+    "https://www.playtombraider.com/en-us/news/articles/reimagining-greece",
+    "https://www.tombraider.com/news/video-games/tomb-raider-legacy-of-atlantis-at-gamescom-2026",
+    "https://www.playtombraider.com/en-us/news/articles/meet-natla",
+    "https://support.aspyr.com/hc/en-us/articles/48286884706957-Tomb-Raider-I-III-Remastered-Challenge-Mode-Patch-3-Community-Update",
+    "https://www.playtombraider.com/en-us/news/articles/combat-reimagined"
+  ],
+  "exclusions": [
+    {
+      "url": "https://www.playtombraider.com/en-us/news/articles/astonishing-travels-greece",
+      "date": "2026-09-17",
+      "reason": "El artículo advierte que sus estándares editoriales son más laxos y que la especulación tiene cabida; no se publica como hecho oficial confirmado."
+    },
+    {
+      "url": "https://www.playtombraider.com/en-us/news/articles/puzzles-reimagined",
+      "date": "2026-08-03",
+      "reason": "Fuera de la ventana: la búsqueda inicial comienza el 12 de agosto de 2026."
+    },
+    {
+      "url": "https://www.tombraider.com/news/all",
+      "reason": "Página de listado; no es una publicación individual."
+    }
+  ],
+  "date_corrections": [
+    {
+      "url": "https://www.tombraider.com/news/community/raider-records-exploring-the-tomb-door-puzzle",
+      "article_individual_value": "2026-10-16",
+      "listing_value": "2026-10-23",
+      "retained_value": "2026-10-16",
+      "reason": "La página individual consultada muestra Oct 16, 2026; el listado oficial /news/all muestra Oct 23, 2026. Se conserva la fecha del artículo individual y la discrepancia queda abierta."
+    }
+  ],
+  "limitations": [
+    "La preselección editorial manual de 14 entradas no sustituye una pasada automática de 90 días.",
+    "El intento de rastreo inicial en modo dry-run no pudo resolver los cuatro dominios y no llegó a descargar ni examinar artículos.",
+    "El primer rastreo automático completo queda pendiente de GitHub Actions; initial_scan_completed permanece false.",
+    "Algunos artículos oficiales de Crystal Dynamics repiten anuncios publicados en otros canales oficiales; no se crearon tarjetas duplicadas.",
+    "No se ha verificado un foro público administrado por los responsables de la franquicia; Society of Raiders se clasifica como newsletter/programa comunitario.",
+    "Los artículos desconocidos que no tengan una regla de resumen en español suficientemente fiel pasan a review_queue.json en vez de recibir un resumen inventado.",
+    "La fecha de Raider Records es discrepante entre la página individual (16 oct) y el listado oficial (23 oct); se conserva la fecha individual y se mantiene incidencia abierta."
+  ],
+  "encyclopedia_index_stats": {
+    "tab_panels_indexed": 20,
+    "details_indexed": 49,
+    "documents_indexed": 69,
+    "headings_indexed": 320,
+    "entities_recognized": 21,
+    "visible_text_characters": 146806
+  },
+  "automated_dry_run": {
+    "command": "python scripts/croft_watch.py --initial --dry-run",
+    "attempted_at": "2026-11-10T18:44:39Z",
+    "window_days": 90,
+    "sources_total": 4,
+    "sources_accessible": 0,
+    "sources_inaccessible": 4,
+    "candidates_examined": 0,
+    "published_new": 0,
+    "html_changed": false,
+    "failure": "Temporary failure in name resolution al consultar robots.txt para tombraider.com, crystaldynamics.com, playtombraider.com y support.aspyr.com.",
+    "state_modified": false,
+    "interpretation": "Último intento ejecutado tras los cambios finales del motor: la ejecución local no pudo resolver los cuatro dominios y no llegó a descargar ni examinar artículos. No se declara completada la exploración histórica; queda pendiente ejecutar en GitHub Actions."
+  }
+}
