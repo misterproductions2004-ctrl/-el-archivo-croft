@@ -40,7 +40,6 @@ TRACKING_KEYS = {"fbclid", "gclid", "mc_cid", "mc_eid", "ref", "source"}
 TRACKING_PREFIXES = ("utm_", "vero_")
 STOP_WORDS = set("""a al algo algunas algunos ante antes como con contra cual cuando de del desde donde dos el ella ellas ellos en entre era es esa ese eso esta estaba estas este esto estos fue ha hasta hay la las le les lo los más mas me mi mis mucha mucho muy ni no nos o os otra otro para pero por porque que se sin sobre son su sus también te tiene todo tras tu tus un una unas uno unos y ya the a an and are as at be by for from has have in into is it its of on or that the their then this to was were will with you your""".split())
 
-# Las reglas explícitas de relevancia evitan falsos positivos por topónimos sueltos.
 FRANCHISE_TERMS = (
     "tomb raider", "lara croft", "legacy of atlantis", "tomb raider: catalyst",
     "the legend of lara croft", "tomb raider i-iii", "tomb raider iv-vi",
@@ -365,11 +364,7 @@ def classify_article(title: str, body: str) -> str:
 
 
 def safe_summary(article: dict[str, Any], source: dict[str, Any]) -> str | None:
-    """Genera únicamente resúmenes deterministas soportados por reglas explícitas.
-
-    Los diarios y entrevistas no reconocidos van a revisión; no se traducen ni
-    se atribuyen declaraciones automáticamente sin una regla con respaldo.
-    """
+    """Genera únicamente resúmenes deterministas soportados por reglas explícitas."""
     title = article.get("title", "").strip()
     body = article.get("body", "")
     norm = normalize_text(title + " " + body)
@@ -390,8 +385,6 @@ def safe_summary(article: dict[str, Any], source: dict[str, Any]) -> str | None:
             date_text = f" La página indica como fecha de lanzamiento {release}." if release else ""
             platform_text = f" También enumera las plataformas {', '.join(platforms)}." if platforms else ""
             return f"La fuente oficial anunció que las reservas de Tomb Raider: Legacy of Atlantis están disponibles{details}.{date_text}{platform_text} La tarjeta conserva el enlace al anuncio original para consultar las condiciones y ediciones."
-    # Resumen específico de las reglas iniciales más importantes, para cuando la
-    # misma noticia aparezca en otro idioma o con tracking distinto.
     known_rules = {
         "tomb raider turns 30": "El sitio oficial celebró el 30.º aniversario de Tomb Raider y anunció una colección musical Lo‑Fi junto a ThatNorskChick. También adelantó la llegada de más de 500 pistas oficiales de bandas sonoras a plataformas de streaming durante noviembre de 2026.",
         "raider records": "El portal oficial presentó Raider Records, un seguimiento de los puzles Tomb Door de Tomb Raider: Legacy of Atlantis. La página reúne pistas y secuencias, actualiza el número de símbolos descubiertos y muestra el estado de los desafíos.",
@@ -425,7 +418,6 @@ def build_index(html_path: Path) -> dict[str, Any]:
                     docs.append({"id": detail_id, "kind": "detail", "title": detail_title, "text": detail_text})
             documents.extend(docs)
             sections.append({"id": panel_id, "title": panel_title, "document_count": len(docs), "characters": len(panel_text)})
-    # Añade encabezados y vocabulario detectado para asociar relaciones sin forzarlas.
     headings = []
     for node in soup.select("h1,h2,h3,h4"):
         text = re.sub(r"\s+", " ", node.get_text(" ", strip=True)).strip()
@@ -468,19 +460,11 @@ def compare_with_index(article: dict[str, Any], index: dict[str, Any]) -> tuple[
         covered = coverage(candidate, reference)
         if score > best["similarity"] or covered > best["coverage"]:
             best = {"similarity": round(score, 4), "coverage": round(covered, 4), "document_id": doc.get("id"), "document_title": doc.get("title")}
-    # Umbrales altos: una coincidencia de tema/personaje no es duplicación factual.
     documented = best["coverage"] >= 0.90 and best["similarity"] >= 0.72
     return documented, best
 
 
 def is_duplicate(article: dict[str, Any], news_items: list[dict[str, Any]], history: list[dict[str, Any]]) -> tuple[bool, str]:
-    """Deduplica URLs/eventos, pero permite volver a evaluar cambios sustanciales.
-
-    Las tarjetas seed no tienen huella del artículo original. La primera pasada
-    automática las protege por URL y guarda una huella observada en el historial;
-    las siguientes pasadas comparan contra esa huella y pueden detectar una
-    actualización material de esa misma URL.
-    """
     url = canonical_url(article.get("canonical_url") or article.get("url", ""))
     title = article.get("title", "")
     current_hash = article.get("content_sha256")
@@ -496,8 +480,6 @@ def is_duplicate(article: dict[str, Any], news_items: list[dict[str, Any]], hist
         old_patches = {extract_patch_version(entry.get("title", "")) for entry in same_url_entries}
         patch_is_new = bool(current_patch and any(old and old != current_patch for old in old_patches))
         if not patch_is_new:
-            # Se elige la huella cronológicamente más reciente, incluso si la
-            # tarjeta seed no contiene hash pero ya existe un escaneo posterior.
             fingerprinted = [entry for entry in same_url_entries if entry.get("content_sha256")]
             fingerprinted.sort(key=lambda entry: (
                 entry.get("checked_at") or entry.get("detected_at") or entry.get("published_to_archive_at") or ""
@@ -510,15 +492,10 @@ def is_duplicate(article: dict[str, Any], news_items: list[dict[str, Any]], hist
                     return True, "url_sin_cambios_sustanciales"
                 materially_changed_same_url = True
             else:
-                # Sin una huella observada aún no se puede afirmar que un cambio
-                # sea material: la primera observación queda como duplicado seed.
                 return True, "url_ya_publicada_sin_huella_previa"
         else:
             materially_changed_same_url = True
 
-    # Las coincidencias entre distintas URL siguen suprimiéndose aunque la
-    # URL actual tenga una actualización: no duplica un acontecimiento publicado
-    # en otro canal oficial.
     for item in news_items:
         if url and canonical_url(item.get("url", "")) == url:
             continue
@@ -607,9 +584,6 @@ class RespectfulFetcher:
         try:
             status, body, _ = self._request(robots_url)
             if status == 404:
-                # Un HTTP 404 significa que no existe fichero robots.txt; no
-                # se interpreta como una prohibición de rastreo. Otros errores
-                # siguen bloqueando la consulta por prudencia.
                 parser = RobotFileParser()
                 parser.set_url(robots_url)
                 parser.parse([])
@@ -756,8 +730,6 @@ def scan_sources(sources: dict[str, Any], state: dict[str, Any], fetcher: Respec
                 feed_urls = discover_alternate_feeds(response["body"], listing_url, source)
                 origin = f"{urlsplit(listing_url).scheme}://{urlsplit(listing_url).netloc}"
                 feed_urls.extend(fetcher.sitemaps.get(origin, []))
-                # Procesa hasta 12 recursos de feed/sitemap, incluidos sitemaps
-                # hijos, siempre dentro del host de la fuente oficial.
                 feed_queue = list(dict.fromkeys(feed_urls))[:8]
                 processed_feeds: set[str] = set()
                 while feed_queue and len(processed_feeds) < 12:
@@ -1020,7 +992,6 @@ def run_scan(force_initial: bool = False, offline: bool = False, dry_run: bool =
         "html_changed": changed,
     }
     logging.info("Resumen de ejecución: %s", json.dumps(result, ensure_ascii=False))
-    # GitHub Actions usa esta salida para evitar commits cuando no hubo noticias.
     github_output = os.environ.get("GITHUB_OUTPUT")
     if github_output:
         with open(github_output, "a", encoding="utf-8") as handle:

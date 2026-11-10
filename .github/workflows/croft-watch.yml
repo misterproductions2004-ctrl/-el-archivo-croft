@@ -1,3 +1,4 @@
+
 name: Croft Watch
 
 on:
@@ -23,6 +24,7 @@ jobs:
     name: Investigar fuentes oficiales
     runs-on: ubuntu-latest
     timeout-minutes: 25
+
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
@@ -37,8 +39,7 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
 
-      # Estado/historial se conservan en caché aunque no haya noticia ni commit.
-      # Cada run_id crea una nueva entrada; restore-keys recupera la más reciente.
+      # Recuperar estado incremental entre ejecuciones.
       - name: Recuperar estado incremental
         uses: actions/cache@v4
         with:
@@ -62,8 +63,6 @@ jobs:
           if [ "$FORCE_INITIAL" = "true" ]; then
             python scripts/croft_watch.py --initial
           else
-            # El motor detecta initial_scan_completed=false y lanza por sí solo
-            # la primera ventana histórica de 90 días.
             python scripts/croft_watch.py
           fi
 
@@ -75,6 +74,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html El_Archivo_Croft_V26.2_ENCICLOPEDIA_AMPLIADA.html data/latest_news.json
+
           if git diff --cached --quiet; then
             echo "No hay cambios publicables; no se crea ningún commit."
           else
@@ -85,4 +85,5 @@ jobs:
       - name: Resumen de ejecución
         if: always()
         run: |
-          echo "Croft Watch ha terminado. Consulta el registro de ejecución de este job para ver fuentes accesibles, bloqueos y decisiones editoriales."
+          echo "Croft Watch ha terminado."
+          echo "Consulta el registro de ejecución para comprobar las fuentes y decisiones editoriales."
