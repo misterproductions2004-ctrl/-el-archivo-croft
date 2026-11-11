@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-10T18:30:22Z",
+  "generated_at": "2026-11-11T15:57:11Z",
   "html_file": "index.html",
   "html_sha256": "ed99983d6bdcd2634565517efd041eabd8e1cf7030700e7a858a0842d74f263f",
   "stats": {
@@ -12,26 +12,126 @@
     "visible_text_characters": 146806
   },
   "sections": [
-    { "id": "atlas", "title": "EL MUNDO ES SU TUMBA.", "document_count": 1, "characters": 2464 },
-    { "id": "reliquias", "title": "LUGARES QUE GUARDAN LEYENDAS.", "document_count": 1, "characters": 16159 },
-    { "id": "biografia", "title": "ANTES DE LA LEYENDA, HUBO UNA NIÑA.", "document_count": 1, "characters": 18584 },
-    { "id": "guia", "title": "¿Cómo empezar en Tomb Raider?", "document_count": 1, "characters": 4676 },
-    { "id": "juegos", "title": "juegos", "document_count": 32, "characters": 27235 },
-    { "id": "peliculas", "title": "peliculas", "document_count": 6, "characters": 3515 },
-    { "id": "otros", "title": "otros", "document_count": 3, "characters": 1199 },
-    { "id": "mods", "title": "Mods y DLCs", "document_count": 5, "characters": 2114 },
-    { "id": "historia", "title": "Historia Detrás de la Saga", "document_count": 1, "characters": 9132 },
-    { "id": "secretos", "title": "🤫 Secretos y curiosidades", "document_count": 4, "characters": 2171 },
-    { "id": "enciclopedia", "title": "📖 Enciclopedia Croft", "document_count": 4, "characters": 18093 },
-    { "id": "corazon", "title": "🏛️ El corazón de la saga", "document_count": 1, "characters": 12896 },
-    { "id": "premios", "title": "🏆 Legado, premios y récords", "document_count": 1, "characters": 4412 },
-    { "id": "futuro", "title": "🚀 El futuro de Tomb Raider", "document_count": 2, "characters": 6680 },
-    { "id": "documentales", "title": "🎬 Documentales y detrás de cámaras", "document_count": 1, "characters": 4450 },
-    { "id": "lgbtq", "title": "🏳️‍🌈 Comunidad LGBTQ+", "document_count": 1, "characters": 4119 },
-    { "id": "stephanie-giorgi", "title": "Stephanie Giorgi", "document_count": 1, "characters": 1567 },
-    { "id": "voces", "title": "🏺 Era Clásica (1996–2003)", "document_count": 1, "characters": 4464 },
-    { "id": "memes", "title": "memes", "document_count": 1, "characters": 2067 },
-    { "id": "quiz", "title": "🎯 Quiz de Tomb Raider", "document_count": 1, "characters": 809 }
+    {
+      "id": "atlas",
+      "title": "EL MUNDO ES SU TUMBA.",
+      "document_count": 1,
+      "characters": 2464
+    },
+    {
+      "id": "reliquias",
+      "title": "LUGARES QUE GUARDAN LEYENDAS.",
+      "document_count": 1,
+      "characters": 16159
+    },
+    {
+      "id": "biografia",
+      "title": "ANTES DE LA LEYENDA, HUBO UNA NIÑA.",
+      "document_count": 1,
+      "characters": 18584
+    },
+    {
+      "id": "guia",
+      "title": "¿Cómo empezar en Tomb Raider?",
+      "document_count": 1,
+      "characters": 4676
+    },
+    {
+      "id": "juegos",
+      "title": "juegos",
+      "document_count": 32,
+      "characters": 27235
+    },
+    {
+      "id": "peliculas",
+      "title": "peliculas",
+      "document_count": 6,
+      "characters": 3515
+    },
+    {
+      "id": "otros",
+      "title": "otros",
+      "document_count": 3,
+      "characters": 1199
+    },
+    {
+      "id": "mods",
+      "title": "Mods y DLCs",
+      "document_count": 5,
+      "characters": 2114
+    },
+    {
+      "id": "historia",
+      "title": "Historia Detrás de la Saga",
+      "document_count": 1,
+      "characters": 9132
+    },
+    {
+      "id": "secretos",
+      "title": "🤫 Secretos y curiosidades",
+      "document_count": 4,
+      "characters": 2171
+    },
+    {
+      "id": "enciclopedia",
+      "title": "📖 Enciclopedia Croft",
+      "document_count": 4,
+      "characters": 18093
+    },
+    {
+      "id": "corazon",
+      "title": "🏛️ El corazón de la saga",
+      "document_count": 1,
+      "characters": 12896
+    },
+    {
+      "id": "premios",
+      "title": "🏆 Legado, premios y récords",
+      "document_count": 1,
+      "characters": 4412
+    },
+    {
+      "id": "futuro",
+      "title": "🚀 El futuro de Tomb Raider",
+      "document_count": 2,
+      "characters": 6680
+    },
+    {
+      "id": "documentales",
+      "title": "🎬 Documentales y detrás de cámaras",
+      "document_count": 1,
+      "characters": 4450
+    },
+    {
+      "id": "lgbtq",
+      "title": "🏳️‍🌈 Comunidad LGBTQ+",
+      "document_count": 1,
+      "characters": 4119
+    },
+    {
+      "id": "stephanie-giorgi",
+      "title": "Stephanie Giorgi",
+      "document_count": 1,
+      "characters": 1567
+    },
+    {
+      "id": "voces",
+      "title": "🏺 Era Clásica (1996–2003)",
+      "document_count": 1,
+      "characters": 4464
+    },
+    {
+      "id": "memes",
+      "title": "memes",
+      "document_count": 1,
+      "characters": 2067
+    },
+    {
+      "id": "quiz",
+      "title": "🎯 Quiz de Tomb Raider",
+      "document_count": 1,
+      "characters": 809
+    }
   ],
   "headings": [
     "Bienvenido a El Archivo Croft",
