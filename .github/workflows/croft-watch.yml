@@ -27,13 +27,13 @@ jobs:
 
     steps:
       - name: Descargar repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
 
       - name: Preparar Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -41,7 +41,7 @@ jobs:
 
       # Recuperar estado incremental entre ejecuciones.
       - name: Recuperar estado incremental
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             data/croft_watch_state.json
