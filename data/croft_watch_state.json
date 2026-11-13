@@ -3,9 +3,51 @@
   "initial_scan_completed": false,
   "initial_scan_required": true,
   "initial_window_days": 90,
-  "last_attempt_at": null,
+  "last_attempt_at": "2026-11-12T01:49:20Z",
   "last_successful_scan_at": null,
-  "last_source_results": [],
+  "last_source_results": [
+    {
+      "source_id": "tombraider_official",
+      "status": "inaccessible",
+      "listings_checked": 0,
+      "articles_discovered": 0,
+      "errors": [
+        "robots_unavailable:No se pudo consultar https://www.tombraider.com/robots.txt: <urlopen error [Errno 11001] getaddrinfo failed>"
+      ],
+      "last_checked_at": "2026-11-12T01:49:20Z"
+    },
+    {
+      "source_id": "crystal_dynamics",
+      "status": "inaccessible",
+      "listings_checked": 0,
+      "articles_discovered": 0,
+      "errors": [
+        "robots_unavailable:No se pudo consultar https://www.crystaldynamics.com/robots.txt: <urlopen error [Errno 11001] getaddrinfo failed>"
+      ],
+      "last_checked_at": "2026-11-12T01:49:20Z"
+    },
+    {
+      "source_id": "amazon_games_tombraider",
+      "status": "inaccessible",
+      "listings_checked": 0,
+      "articles_discovered": 0,
+      "errors": [
+        "robots_unavailable:No se pudo consultar https://www.playtombraider.com/robots.txt: <urlopen error [Errno 11001] getaddrinfo failed>"
+      ],
+      "last_checked_at": "2026-11-12T01:49:20Z"
+    },
+    {
+      "source_id": "aspyr_support",
+      "status": "inaccessible",
+      "listings_checked": 0,
+      "articles_discovered": 0,
+      "errors": [
+        "robots_unavailable:No se pudo consultar https://support.aspyr.com/robots.txt: <urlopen error [Errno 11001] getaddrinfo failed>",
+        "robots_cache"
+      ],
+      "last_checked_at": "2026-11-12T01:49:20Z"
+    }
+  ],
   "last_decision_counts": {},
   "last_published_count": 0,
   "http_cache": {},
@@ -13,5 +55,6 @@
   "notes": [
     "Las 14 tarjetas iniciales proceden de una selección editorial manual contrastada con publicaciones oficiales.",
     "La primera ejecución automática de GitHub Actions debe repetir el rastreo de los últimos 90 días; no se declara completada todavía."
-  ]
+  ],
+  "last_window_days": 90
 }
